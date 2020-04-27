@@ -1,0 +1,58 @@
+﻿@model IEnumerable<logicProject.Models.EF.ViewModel>
+
+@{
+    ViewBag.Title = "ViewRequestDetails";
+}
+
+<h2>View Request Details</h2>
+<p align="right">
+<p>
+    FormId: @Html.DisplayNameFor(model => model.requests.RequestFormId)
+</p>
+    Order Status: @Html.DisplayNameFor(model => model.requests.Status)
+    </p>
+    <table class="table">
+
+        <tr>
+
+            <th>
+                Category
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Unit
+            </th>
+            <th>
+                Quantity
+            </th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <th>
+                    @Html.DisplayFor(modelItem => item.products.Category)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.products.Description)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.products.Unit)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.requestDetails.ReqQty)
+                </th>
+            </tr>
+        }
+    </table>
+
+    <button onclick="goBack()">Back to List</button>
+
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>

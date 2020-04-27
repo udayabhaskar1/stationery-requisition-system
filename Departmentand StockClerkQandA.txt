@@ -1,0 +1,43 @@
+Department
+1. Request stationary will be routed to dept head to approve or reject (must insert comments for reason of request)
+2. if approve, routed to store clark. Give status to the requester
+3. if reject, process ends. Give status to the requester
+4. Department head will appoint a Department rep. Department rep will determine which point to collect and inform the store clerk.
+5. Department rep can delegate to other person to collect. ????
+6. Tender process is outside the system, but will integrate later
+7. Department will not know the stock count of their department, they will only know the request of their department
+8. Only need to see from the catalogue
+9. In the disbursement list, and at the collection point, there can be a change in the disbursement list
+10. No inventory system in department level 
+11. Will be able to update the collection point and update dept rep
+12. The frequency of collection depends on the store clerk 
+13. If there is a shortfall of the stock request from dept, either buy from other place or reorder again for next time
+14. Must have leave from and leave to for dept head's leave
+
+
+
+3 Mobile features (for dept and store)
+A value add features (can be for store or for dept)
+wireframe for mobile
+
+Store Clerk 
+1. Will send a charge-back 
+2. Tender is done by finance department/ purchasing dept
+3. Need to create a reminder if the retrieved is not equal to needed( means the stock qty is less than requested qty), so order from supplier again
+4. Every item has a stock card for each item 
+5. Every movement will need to record in the stock card
+6. First come-first serve basis, to distribute the stationery to let's say 3 different dept
+7. Stock clerk need to know the validity of the dept rep. Email sent to store clerk who dept rep to collect stationery
+8. Need to show prove for acknowledgment of stationery 
+9. ML in recommendation of reorder level and reorder quantities and trend analysis of stock item movements?
+10. Tend to do overlapping activities for 3 store clerk(they go to store and retrive the same stationery and update the stock card )
+11. Once store clerk take stock from warehouse, directly update the stock card, although the stock may not be passed on to the dept rep
+12. if 3 suppliers don't have the stock, won't order from other suppliers
+13. First In First Out in warehouse. 
+
+
+
+
+
+
+

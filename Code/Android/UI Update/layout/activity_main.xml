@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/RepBtn"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:text="Appoint Representative"
+            android:drawableLeft="@drawable/appointbutton"
+            android:background="#3bd6c6"/>
+
+        <Button
+            android:id="@+id/LocationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:text="Appoint Location"
+            android:drawableLeft="@drawable/locationbutton"
+            android:background="#4b86b4"/>
+
+        <Button
+            android:id="@+id/HeadBtn"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:text="Authorize Staff"
+            android:drawableLeft="@drawable/repbutton"
+            android:background="#bbf6f0" />
+
+    </LinearLayout>
+</LinearLayout>

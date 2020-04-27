@@ -1,0 +1,148 @@
+﻿@model logicProject.Models.EF.Authorization
+
+@{
+	ViewBag.Title = "GetStaffList";
+}
+
+<h2>Authorization Settings</h2>
+
+@{
+	Layout = null;
+}
+
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/select2.min.js"></script>
+
+<link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+
+<style>
+	.submitBtn {
+		background-color: #008EEC; /* BLUE */
+		border: none;
+		color: white;
+		padding: 8px 16px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		-webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		cursor: pointer;
+		border-radius: 4px;
+		float: right;
+	}
+
+	.submitBtn:hover {
+		background-color: #73C2FB;
+		color: white;
+	}
+
+	.text-box single-line {
+		width:100%;
+	}
+
+</style>
+
+<div>
+	<div style="float: left; width: 40%">
+		<select class="StaffName" name="staffname" style="width:100%"></select>
+		<br />
+		<br />
+		<div style=" width: 50%; float:left">
+			<label for="Start Date" class="startdate">From:</label>
+			<br />
+			@Html.EditorFor(model => model.StartDate, new { id = "StartDate" })
+		</div>
+
+		<div style=" width: 50%; float: right">
+			<label for="End Date" class="enddate">To:</label>
+			<br />
+			@Html.EditorFor(model => model.EndDate, new { id = "EndDate" })
+		</div>
+		<br />
+		<input type="submit" value="Submit" class="submitBtn" />
+	</div>
+</div>
+
+
+
+<script>
+	$(document).ready(function () {
+		$("#StartDate").datepicker({
+			dateFormat: 'dd/mm/yy'
+		});
+	});
+
+	$(document).ready(function () {
+		$("#EndDate").datepicker({ 
+			dateFormat: 'dd/mm/yy' });
+	});
+
+	$("#StartDate").datepicker({
+		onSelect: function () {
+			var startDateObj = $(this).datepicker('getStartDate');
+			success: console.log(startDateObj)
+		}
+	});
+
+	$("#EndDate").datepicker({
+		onSelect: function () {
+			var endDateObj = $(this).datepicker('getEndDate');
+			success: console.log(endDateObj)
+		}
+	});
+
+	$(document).ready(function () {
+		$(".StaffName").select2({
+			placeholder: "Search Employee Name",
+			theme: "classic",
+			ajax: {
+				type: "GET",
+				url: "/AppointDeptStaff/GetStaffList",
+				success: console.log("success"),
+				dataType: "json",
+				data: function (params) {
+					return {
+						searchTerm: params.term
+					};
+				},
+				processResults: function (data) {
+					return {
+						results: $.map(data, function (obj) {
+							return {
+								id: obj.id,
+								text: obj.text
+							}
+						})
+					};
+				}
+			}
+		});
+
+		$(".submitBtn").click(function () {
+			let selected = $(".StaffName option:selected").text();
+			let startDate = $("#StartDate").val();
+			let endDate = $("#EndDate").val();
+			$.ajax(
+				{
+					url: "/Authorization/AppointStaff?staffname=" + selected + "&getStartDate=" + startDate + "&getEndDate=" + endDate,
+					contentType: 'application/json',
+					dataType: 'json',
+					type: 'POST',
+					success: function (data) {
+						alert("Authorization Successful");
+					},
+					//error: function () { alert('error'); }
+				});
+		})
+	});
+
+
+
+</script>
+
+
+

@@ -1,0 +1,90 @@
+﻿
+@{
+	ViewBag.Title = "GetStaffList";
+}
+
+<h2>GetStaffList</h2>
+
+@{
+	Layout = null;
+}
+
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/select2.min.js"></script>
+
+<br />
+
+<select class="StaffName" style="width:500px"></select>
+
+<script>
+	$(document).ready(function () {
+		$(".StaffName").select2({
+			placeholder: "Staff",
+			theme: "classic",
+			ajax: {
+				type: "GET",
+				url: "/AppointDeptStaff/GetStaffList",
+				success: console.log("success"),
+				dataType: "json",
+				data: function (params) {
+					return {
+						searchTerm: params.term
+					};
+				},
+				processResults: function (data) {
+					return {
+						results: $.map(data, function (obj) {
+							return {
+								id: obj.id,
+								text: obj.text
+							}
+						})
+
+					};
+				}
+			}
+		});
+	});
+</script>
+
+@*<script>
+	$(document).ready(function () {
+		$(".StaffName").select2({
+			placeholder: "Staff",
+			theme: "classic",
+			ajax: {
+				type: "GET",
+				url: "/AppointDeptStaff/GetStaffList",
+				success: console.log("success"),
+				dataType: "json",
+				data: function (params) {
+					return {
+						searchTerm: params.term
+					};
+				},
+				processResults: function (response) {
+					return {
+						results: response
+					};
+				}
+
+			
+				}
+				//processResults: function (data) {
+				//	return {
+				//		results: $.map(data, function (item) {
+				//			return {
+				//				text: item.StaffName,
+				//				id: item.StaffId
+				//			}
+				//		})
+
+				//	};
+				//}
+			}
+		});
+	});
+</script>*@
+
+
